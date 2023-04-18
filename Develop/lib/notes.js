@@ -11,15 +11,7 @@ function createNotesFile(body, notesData) {
   return note;
 }
 
-  // re-index 
-
-  let index = 0;
-  notesData.forEach(note => {
-    note.id = index;
-    index += 1;
-  });
-
-  // this deletes the notes that were created
+   // this deletes the notes that were created
 
 function deleteNotesFile(id, notes) {
   let notesData = notes.filter(el => {
@@ -30,6 +22,14 @@ function deleteNotesFile(id, notes) {
     }
   })
 
+  // re-index 
+
+  let index = 0;
+  notesData.forEach(note => {
+    note.id = index;
+    index += 1;
+  });
+
   //write to file
 
   fs.writeFileSync(
@@ -37,6 +37,7 @@ function deleteNotesFile(id, notes) {
     JSON.stringify({ notesData }, null, 2)
   );
   return notesData;
+
 }
 
 module.exports = {
